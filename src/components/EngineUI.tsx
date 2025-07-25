@@ -1,13 +1,11 @@
 // Holographic Periodic Table AI Engine Interface — with Export Tools
-// ... [imports and existing code remain unchanged]
 
+import React, { useState } from 'react';
 import { saveAs } from 'file-saver';
 import jsPDF from 'jspdf';
-import { useState } from 'react';
 import ElementPicker from './ElementPicker';
 import MoleculeBuilder from './MoleculeBuilder';
 import { calculateMoleculeScore } from '../utils/calculateScore';
-import { Button } from '@/components/ui/button';
 
 function exportToCSV(atoms, score) {
   let csv = 'Element,Atomic Number,Battery,Aerospace,Biochem\n';
@@ -60,8 +58,8 @@ export default function EngineUI() {
           <p><strong>Simulated Conductivity:</strong> {score.conductivity}</p>
           <p><strong>Simulated Reactivity:</strong> {score.reactivity}</p>
           <div className="flex gap-2 mt-4">
-            <Button onClick={() => exportToCSV(selectedAtoms, score)}>Export as CSV</Button>
-            <Button onClick={() => exportToPDF(selectedAtoms, score)}>Export as PDF</Button>
+            <button onClick={() => exportToCSV(selectedAtoms, score)} className="px-4 py-2 bg-blue-500 text-white rounded">Export as CSV</button>
+            <button onClick={() => exportToPDF(selectedAtoms, score)} className="px-4 py-2 bg-green-500 text-white rounded">Export as PDF</button>
           </div>
         </div>
       )}
